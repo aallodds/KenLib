@@ -1,0 +1,49 @@
+#================================
+# Top-level '.gitattributes'
+#
+# Maintainer: Grant Abernathy
+#
+# Submit PR if changing.
+#================================
+
+# Global Default...
+* text=auto
+
+*.fx    text linguist-language=HLSL eol=lf
+*.fxh   text linguist-language=HLSL eol=lf
+*.cpp   text linguist-language=C++  eol=lf
+*.hpp   text linguist-language=C++  eol=lf
+*.hxx   text linguist-language=C++  eol=lf
+*.cxx   text linguist-language=C++  eol=lf
+*.hh    text linguist-language=C++  eol=lf
+*.cc    text linguist-language=C++  eol=lf
+# *.h is EOL-normalized, but not language-specified
+*.h     text eol=lf
+*.c     text linguist-language=C        eol=lf
+*.txt   text eol=lf
+*.plan  text eol=lf
+# Shell scripts
+*.sh    text eol=lf
+*.xml   text eol=lf
+*.yml   text eol=lf
+*.json  text eol=lf
+*.ini   text eol=lf
+*.cfg   text eol=lf
+*.cmake text eol=lf
+*.md    text linguist-language=Markdown eol=lf
+*.py    text linguist-language=Python eol=lf
+*.rb    text linguist-language=Ruby eol=lf
+*.go    text linguist-language=Go eol=lf
+*.rs    text linguist-language=Rust eol=lf
+*.java  text linguist-language=Java eol=lf
+*.js    text linguist-language=JavaScript eol=lf
+*.css   text linguist-language=CSS eol=lf
+*.html  text linguist-language=HTML eol=lf
+*.htm   text linguist-language=HTML eol=lf
+*.cs    text linguist-language=C# eol=lf
+*.swift text linguist-language=Swift eol=lf
+*.m     text linguist-language=Objective-C eol=lf
+*.mm    text linguist-language=Objective-C++ eol=lf
+# CRLF is necessary for Windows batch files to execute properly
+*.bat   text eol=crlf
+*.cmd   text eol=crlf

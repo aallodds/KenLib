@@ -1,0 +1,14 @@
+*
+
+!LICENSE
+!.gitignore
+!.gitattributes
+
+!.cc
+!.hh
+!.cxx
+!.hxx
+!.cpp
+!.hpp
+!.c
+!.h
