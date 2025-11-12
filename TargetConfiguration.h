@@ -185,6 +185,63 @@
 //
 // Determine the platform.
 //
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) || defined(__WIN32__) || \
+    defined(WIN64) || defined(_WIN64) || defined(__WIN64) || defined(__WIN64__)
+
+    #define PLATFORM_WINDOWS 1
+
+    #if defined(WIN64) || defined(_WIN64) || defined(__WIN64) || defined(__WIN64__)
+        #define PLATFORM_WIN64 1
+    #else
+        #define PLATFORM_WIN32 1
+    #endif
+#endif
+
+#if defined(__MINGW32__) || defined(__MINGW64__)
+    #define PLATFORM_MINGW 1
+
+    #if defined(__MINGW64__)
+        #define PLATFORM_MINGW64 1
+    #else
+        #define PLATFORM_MINGW32 1
+    #endif
+#endif
+
+#if defined(__ANDROID__) || defined(ANDROID)
+    #define PLATFORM_ANDROID 1
+#endif
+
+#if !defined(PLATFORM_ANDROID)
+    #if defined(linux) || defined(__linux) || defined(__linux__) || defined(__gnu_linux__)
+        #define PLATFORM_LINUX 1
+    #endif
+#endif
+
+#if defined(__OpenBSD__) || defined(__FreeBSD__) || defined(__NetBSD__) || defined(__bsdi__) || \
+    defined(__DragonFly__)
+
+    #define PLATFORM_BSD 1
+
+    #if defined(__OpenBSD__)
+        #define PLATFORM_OPENBSD 1
+    #endif
+
+    #if defined(__FreeBSD__)
+        #define PLATFORM_FREEBSD 1
+    #endif
+
+    #if defined(__NetBSD__)
+        #define PLATFORM_NETBSD 1
+    #endif
+
+    #if defined(__bsdi__)
+        #define PLATFORM_BSDI 1
+    #endif
+
+    #if defined(__DragonFly__)
+        #define PLATFORM_DRAGONFLY 1
+    #endif
+#endif
 
 //
 // Determine the data model.
