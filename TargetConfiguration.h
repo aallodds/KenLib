@@ -1,6 +1,8 @@
 #ifndef KENLIB_TARGETCONFIGURATION_H
 #define KENLIB_TARGETCONFIGURATION_H
 
+#if !defined(__DO_NOT_AUTO_DETERMINE_TARGET_CONFIGURATION__)
+
 //
 // Determine the compiler.
 //
@@ -386,6 +388,30 @@
     #endif
 #endif
 
+#endif // !__DO_NOT_AUTO_DETERMINE_TARGET_CONFIGURATION__
+
+#if defined(__DO_NOT_AUTO_DETERMINE_TARGET_CONFIGURATION__)
+    #if defined(__TARGET_PLATFORM_ORBIS__)
+        #define PLATFORM_PS4 1
+        #define PLATFORM_ORBIS 1
+        #define CPU_X86_64 1
+        #define CPU_X86 1
+        #define KEN_LP64 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_PROSPERO__)
+        #define PLATFORM_PS5 1
+        #define PLATFORM_PROSPERO 1
+        #define CPU_X86_64 1
+        #define CPU_X86 1
+        #define KEN_LP64 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+#endif
+
+#if !defined(__DO_NOT_DEFINE_UNSET_MACROS__)
+
 //
 // Define any unset macros to zero
 //
@@ -728,5 +754,7 @@
 #ifndef KEN_BIG_ENDIAN
     #define KEN_BIG_ENDIAN 0
 #endif
+
+#endif // !__DO_NOT_DEFINE_UNSET_MACROS__
 
 #endif // KENLIB_TARGETCONFIGURATION_H
