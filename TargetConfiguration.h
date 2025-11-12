@@ -263,6 +263,31 @@
     #define PLATFORM_PROSPERO 1
 #endif
 
+#if defined(_XENON) || defined(_X360) || defined(_XBOX360)
+    #define PLATFORM_XBOX360 1
+    #define PLATFORM_X360 1
+    #define PLATFORM_XENON 1
+#endif
+
+#if defined(_DURANGO) || defined(_XBOX1) || defined(_XBOX_ONE) || defined(__XBOXONE__) || \
+    defined(_GAMING_XBOX_ONE) || defined(_TITLE)
+    #define PLATFORM_XBOXONE 1
+    #define PLATFORM_XBOX_ONE 1
+    #define PLATFORM_XBOX1 1
+    #define PLATFORM_DURANGO 1
+#endif
+
+#if defined(__XBOXSERIES__) || defined(_GAMING_XBOX_SCARLETT)
+    #define PLATFORM_XBOXSERIES 1
+    #define PLATFORM_XBOX_SERIES 1
+    #define PLATFORM_SCARLETT 1
+#endif
+
+// This refers to the original XBOX.
+#if defined(_XBOX) && !defined(PLATFORM_XENON) && !defined(PLATFORM_DURANGO) && !defined(PLATFORM_SCARLETT)
+    #define PLATFORM_XBOX 1
+#endif
+
 //
 // Determine the data model.
 //
