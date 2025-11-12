@@ -329,6 +329,39 @@
 //
 // Determine the data model.
 //
+#if defined(_ILP32) || defined(__ILP32__)
+    #define KEN_ILP32 1
+#endif
+
+#if defined(_LP64) || defined(__LP64__)
+    #define KEN_LP64 1
+#endif
+
+#if defined(_LLP64) || defined(__LLP64__)
+    #define KEN_LLP64 1
+#endif
+
+#if !defined(KEN_ILP32)
+    #if defined(CPU_X86_32) || defined(CPU_ARM32) || \
+        defined(CPU_PPC32) || defined(CPU_MIPS32) || \
+        defined(CPU_RISCV32)
+
+        #define KEN_ILP32 1
+    #endif
+#endif
+
+#if !defined(KEN_LP64) && !defined(PLATFORM_WIN64)
+    #if defined(CPU_X86_64) || defined(CPU_ARM64) || \
+        defined(CPU_PPC64) || defined(CPU_MIPS64) || \
+        defined(CPU_RISCV64)
+
+        #define KEN_LP64 1
+    #endif
+#endif
+
+#if defined(PLATFORM_WIN64) && !defined(KEN_LLP64)
+    #define KEN_LLP64 1
+#endif
 
 //
 // Determine the endianness.
