@@ -243,6 +243,35 @@
     #endif
 #endif
 
+#if defined(GEKKO) || defined(__PPCGEKKO__)
+    #define PLATFORM_GAMECUBE 1
+#endif
+
+#if defined(__DS__) || defined(SDK_ARM9) || defined(SDK_TS)
+    #define PLATFORM_NDS 1
+    #define PLATFORM_DS 1
+#endif
+
+#if defined(__3DS__) || defined(NN_COMPILER_RVCT) || defined(NN_PLATFORM_CTR)
+    #define PLATFORM_3DS 1
+#endif
+
+#if defined(RVL) || defined(RVL_SDK) || defined(RVL_OS) || \
+    defined(__PPCBROADWAY__) || \
+    defined(_WII) || defined(__WII__) || \
+    defined(cafe) || defined(__CAFE__)
+    #define PLATFORM_WII 1
+#endif
+
+#if defined(__espresso__) || defined(__WIIU__)
+    #define PLATFORM_WIIU 1
+#endif
+
+#if defined(__SWITCH__) || defined(_SWITCH) || defined(__NX__) || \
+    defined(NN_NINTENDO_SDK)
+    #define PLATFORM_SWITCH 1
+#endif
+
 #if defined(SN_TARGET_PSP) || defined(_PSP) || defined(__PSP__)
     #define PLATFORM_PSP 1
 #endif
