@@ -243,6 +243,26 @@
     #endif
 #endif
 
+#if defined(SN_TARGET_PS2) || defined(_PS2) || defined(__PS2__) || defined(__PLAYSTATION2__)
+    #define PLATFORM_PS2 1
+#endif
+
+#if defined(SN_TARGET_PS3) || defined(_PS3) || defined(__PS3__) || defined(__CELLOS_LV2__)
+    #define PLATFORM_PS3 1
+#endif
+
+#if defined(SN_TARGET_ORBIS) || defined(SN_TARGET_PS4) || \
+    defined(__ORBIS__) || defined(_PS4) || defined(__PS4__)
+
+    #define PLATFORM_PS4 1
+    #define PLATFORM_ORBIS 1
+#endif
+
+#if defined(SN_TARGET_PROSPERO) || defined(__PROSPERO__)
+    #define PLATFORM_PS5 1
+    #define PLATFORM_PROSPERO 1
+#endif
+
 //
 // Determine the data model.
 //
