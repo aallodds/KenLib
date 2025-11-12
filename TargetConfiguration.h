@@ -287,8 +287,37 @@
     #define PLATFORM_PS2 1
 #endif
 
+#if defined(PLATFORM_PS2)
+    #if defined(__ee__) || defined(__EE__) || defined(__ee) || defined(__EE) || \
+        defined(_EE) || defined(_ee) || defined(ee) || defined(EE)
+        #define CPU_EE 1
+        #define CPU_MIPS128 1
+        #define PS2_EE 1
+    #endif
+
+    #if defined(__iop__) || defined(__IOP__) || defined(__iop) || defined(__IOP) || \
+        defined(_IOP) || defined(_iop) || defined(iop) || defined(IOP)
+        #define CPU_IOP 1
+        #define PS2_IOP 1
+    #endif
+#endif
+
 #if defined(SN_TARGET_PS3) || defined(_PS3) || defined(__PS3__) || defined(__CELLOS_LV2__)
     #define PLATFORM_PS3 1
+#endif
+
+#if defined(PLATFORM_PS3)
+    #if defined(__PPU__) || defined(__ppu__) || defined(__PPU) || defined(__ppu) || \
+        defined(_PPU) || defined(_ppu) || defined(ppu) || defined(PPU)
+        #define CPU_PPU 1
+        #define PS3_PPU 1
+    #endif
+
+    #if defined(__SPU__) || defined(__spu__) || defined(__SPU) || defined(__spu) || \
+        defined(_SPU) || defined(_spu) || defined(spu) || defined(SPU)
+        #define CPU_SPU 1
+        #define PS3_SPU 1
+    #endif
 #endif
 
 #if defined(SN_TARGET_ORBIS) || defined(SN_TARGET_PS4) || \
@@ -343,28 +372,6 @@
     #define KEN_LLP64 1
 #endif
 
-#if !defined(KEN_ILP32)
-    #if defined(CPU_X86_32) || defined(CPU_ARM32) || \
-        defined(CPU_PPC32) || defined(CPU_MIPS32) || \
-        defined(CPU_RISCV32)
-
-        #define KEN_ILP32 1
-    #endif
-#endif
-
-#if !defined(KEN_LP64) && !defined(PLATFORM_WIN64)
-    #if defined(CPU_X86_64) || defined(CPU_ARM64) || \
-        defined(CPU_PPC64) || defined(CPU_MIPS64) || \
-        defined(CPU_RISCV64)
-
-        #define KEN_LP64 1
-    #endif
-#endif
-
-#if defined(PLATFORM_WIN64) && !defined(KEN_LLP64)
-    #define KEN_LLP64 1
-#endif
-
 //
 // Determine the endianness.
 //
@@ -390,7 +397,275 @@
 
 #endif // !__DO_NOT_AUTO_DETERMINE_TARGET_CONFIGURATION__
 
+//
+// Manual data model
+//
+#if !defined(KEN_ILP32)
+    #if defined(CPU_X86_32) || defined(CPU_ARM32) || \
+        defined(CPU_PPC32) || defined(CPU_MIPS32) || \
+        defined(CPU_RISCV32) || defined(PS3_SPU) || \
+        defined(PS2_EE) || defined(PS2_IOP)
+
+        #define KEN_ILP32 1
+    #endif
+#endif
+
+#if !defined(KEN_LP64) && !defined(PLATFORM_WIN64)
+    #if defined(CPU_X86_64) || defined(CPU_ARM64) || \
+        defined(CPU_PPC64) || defined(CPU_MIPS64) || \
+        defined(CPU_RISCV64) || defined(PS3_PPU)
+
+        #define KEN_LP64 1
+    #endif
+#endif
+
+#if defined(PLATFORM_WIN64) && !defined(KEN_LLP64)
+    #define KEN_LLP64 1
+#endif
+
 #if defined(__DO_NOT_AUTO_DETERMINE_TARGET_CONFIGURATION__)
+    #if defined(__TARGET_PLATFORM_WIN64__)
+        #define PLATFORM_WINDOWS 1
+        #define PLATFORM_WIN64 1
+        #define CPU_X86_64 1
+        #define CPU_X86 1
+        #define KEN_LLP64 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+    
+    #if defined(__TARGET_PLATFORM_WIN64_ARM__)
+        #define PLATFORM_WINDOWS 1
+        #define PLATFORM_WIN64 1
+        #define CPU_ARM64 1
+        #define CPU_ARM 1
+        #define KEN_LLP64 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_WIN32__)
+        #define PLATFORM_WINDOWS 1
+        #define PLATFORM_WIN32 1
+        #define CPU_X86_32 1
+        #define CPU_X86 1
+        #define KEN_ILP32 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_LINUX_X86_64__)
+        #define PLATFORM_LINUX 1
+        #define CPU_X86_64 1
+        #define CPU_X86 1
+        #define KEN_LP64 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_LINUX_X86_32__)
+        #define PLATFORM_LINUX 1
+        #define CPU_X86_32 1
+        #define CPU_X86 1
+        #define KEN_ILP32 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_LINUX_ARM64__)
+        #define PLATFORM_LINUX 1
+        #define CPU_ARM64 1
+        #define CPU_ARM 1
+        #define KEN_LP64 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_LINUX_ARM32__)
+        #define PLATFORM_LINUX 1
+        #define CPU_ARM32 1
+        #define CPU_ARM 1
+        #define KEN_ILP32 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_BSD_X86_64__)
+        #define PLATFORM_BSD 1
+        #define CPU_X86_64 1
+        #define CPU_X86 1
+        #define KEN_LP64 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_BSD_X86_32__)
+        #define PLATFORM_BSD 1
+        #define CPU_X86_32 1
+        #define CPU_X86 1
+        #define KEN_ILP32 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_BSD_ARM64__)
+        #define PLATFORM_BSD 1
+        #define CPU_ARM64 1
+        #define CPU_ARM 1
+        #define KEN_LP64 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_BSD_ARM32__)
+        #define PLATFORM_BSD 1
+        #define CPU_ARM32 1
+        #define CPU_ARM 1
+        #define KEN_ILP32 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_FREEBSD__)
+        #define PLATFORM_FREEBSD 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_OPENBSD__)
+        #define PLATFORM_OPENBSD 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_NETBSD__)
+        #define PLATFORM_NETBSD 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_DRAGONFLY__)
+        #define PLATFORM_DRAGONFLY 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_GAMECUBE__)
+        #define PLATFORM_GAMECUBE 1
+        #define CPU_PPC32 1
+        #define CPU_PPC 1
+        #define KEN_ILP32 1
+        #define KEN_BIG_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_NDS__)
+        #define PLATFORM_NDS 1
+        #define PLATFORM_DS 1
+        #define CPU_ARM32 1
+        #define CPU_ARM9 1
+        #define CPU_ARM 1
+        #define KEN_ILP32 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_3DS__)
+        #define PLATFORM_3DS 1
+        #define CPU_ARM32 1
+        #define CPU_ARM11 1
+        #define CPU_ARM 1
+        #define KEN_ILP32 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_WII__)
+        #define PLATFORM_WII 1
+        #define CPU_PPC32 1
+        #define CPU_PPC 1
+        #define KEN_ILP32 1
+        #define KEN_BIG_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_WIIU__)
+        #define PLATFORM_WIIU 1
+        #define CPU_PPC64 1
+        #define CPU_PPC 1
+        #define KEN_LP64 1
+        #define KEN_BIG_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_SWITCH__)
+        #define PLATFORM_SWITCH 1
+        #define CPU_ARM64 1
+        #define CPU_ARM 1
+        #define KEN_LP64 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_ORIGINAL_XBOX__)
+        #define PLATFORM_XBOX 1
+        #define CPU_X86_32 1
+        #define CPU_X86 1
+        #define KEN_ILP32 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_XENON__)
+        #define PLATFORM_XBOX360 1
+        #define PLATFORM_X360 1
+        #define PLATFORM_XENON 1
+        #define CPU_PPC 1
+        #define CPU_PPC64 1
+        #define KEN_LLP64 1
+        #define KEN_BIG_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_DURANGO__)
+        #define PLATFORM_XBOXONE 1
+        #define PLATFORM_XBOX_ONE 1
+        #define PLATFORM_XBOX1 1
+        #define PLATFORM_DURANGO 1
+        #define CPU_X86_64 1
+        #define CPU_X86 1
+        #define KEN_LLP64 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_SCARLETT__)
+        #define PLATFORM_XBOXSERIES 1
+        #define PLATFORM_XBOX_SERIES 1
+        #define PLATFORM_SCARLETT 1
+        #define CPU_X86_64 1
+        #define CPU_X86 1
+        #define KEN_LLP64 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_PS2__)
+        #define PLATFORM_PS2 1
+        #define CPU_MIPS32 1
+        #define CPU_MIPS 1
+        #define KEN_ILP32 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PS2_EE__)
+        #define CPU_EE 1
+        #define CPU_MIPS128 1
+        #define CPU_MIPS64 1
+        #define CPU_MIPS 1
+        #define PS2_EE 1
+    #endif
+
+    #if defined(__TARGET_PS2_IOP__)
+        #define CPU_IOP 1
+        #define CPU_MIPS32 1
+        #define CPU_MIPS 1
+        #define PS2_IOP 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_PS3__)
+        #define PLATFORM_PS3 1
+        #define CPU_PPC64 1
+        #define CPU_PPC 1
+        #define KEN_LP64 1
+        #define KEN_BIG_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PS3_PPU__)
+        #define CPU_PPU 1
+        #define CPU_PPC64 1
+        #define CPU_PPC 1
+        #define PS3_PPU 1
+    #endif
+
+    #if defined(__TARGET_PS3_SPU__)
+        #define CPU_SPU 1
+        #define CPU_PPC64 1
+        #define CPU_PPC 1
+        #define PS3_SPU 1
+    #endif
+
     #if defined(__TARGET_PLATFORM_ORBIS__)
         #define PLATFORM_PS4 1
         #define PLATFORM_ORBIS 1
@@ -406,6 +681,23 @@
         #define CPU_X86_64 1
         #define CPU_X86 1
         #define KEN_LP64 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_PSP__)
+        #define PLATFORM_PSP 1
+        #define CPU_MIPS32 1
+        #define CPU_MIPS 1
+        #define KEN_ILP32 1
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+
+    #if defined(__TARGET_PLATFORM_PSP2__)
+        #define PLATFORM_PSP2 1
+        #define PLATFORM_VITA 1
+        #define CPU_ARM32 1
+        #define CPU_ARM 1
+        #define KEN_ILP32 1
         #define KEN_LITTLE_ENDIAN 1
     #endif
 #endif
