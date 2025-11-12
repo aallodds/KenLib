@@ -247,6 +247,11 @@
     #define PLATFORM_PSP 1
 #endif
 
+#if defined(SN_TARGET_PSP2) || defined(__VITA__) || defined(__PSP2__)
+    #define PLATFORM_PSP2 1
+    #define PLATFORM_VITA 1
+#endif
+
 #if defined(SN_TARGET_PS2) || defined(_PS2) || defined(__PS2__) || defined(__PLAYSTATION2__)
     #define PLATFORM_PS2 1
 #endif
