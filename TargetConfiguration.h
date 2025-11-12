@@ -366,5 +366,74 @@
 //
 // Determine the endianness.
 //
+#if defined(__BYTE_ORDER__)
+    #if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+        #define KEN_LITTLE_ENDIAN 1
+    #elif __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+        #define KEN_BIG_ENDIAN 1
+    #endif
+#endif
+
+#if defined(PLATFORM_WINDOWS) || defined(PLATFORM_MINGW) || \
+    defined(PLATFORM_LINUX) || defined(PLATFORM_ANDROID) || \
+    defined(PLATFORM_BSD)
+    #if !defined(KEN_LITTLE_ENDIAN) && !defined(KEN_BIG_ENDIAN)
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+#endif
+
+#if defined(PLATFORM_XENON)
+    #if !defined(KEN_LITTLE_ENDIAN) && !defined(KEN_BIG_ENDIAN)
+        #define KEN_BIG_ENDIAN 1
+    #endif
+#endif
+
+#if defined(PLATFORM_PS2)
+    #if !defined(KEN_LITTLE_ENDIAN) && !defined(KEN_BIG_ENDIAN)
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+#endif
+
+#if defined(PLATFORM_PS3)
+    #if !defined(KEN_LITTLE_ENDIAN) && !defined(KEN_BIG_ENDIAN)
+        #define KEN_BIG_ENDIAN 1
+    #endif
+#endif
+
+#if defined(PLATFORM_ORBIS) || defined(PLATFORM_PROSPERO) || defined(PLATFORM_VITA) || defined(PLATFORM_PSP)
+    #if !defined(KEN_LITTLE_ENDIAN) && !defined(KEN_BIG_ENDIAN)
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+#endif
+
+#if defined(PLATFORM_XBOX) || defined(PLATFORM_DURANGO) || defined(PLATFORM_SCARLETT)
+    #if !defined(KEN_LITTLE_ENDIAN) && !defined(KEN_BIG_ENDIAN)
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+#endif
+
+#if defined(PLATFORM_XENON)
+    #if !defined(KEN_LITTLE_ENDIAN) && !defined(KEN_BIG_ENDIAN)
+        #define KEN_BIG_ENDIAN 1
+    #endif
+#endif
+
+#if defined(PLATFORM_NDS) || defined(PLATFORM_3DS)
+    #if !defined(KEN_LITTLE_ENDIAN) && !defined(KEN_BIG_ENDIAN)
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+#endif
+
+#if defined(PLATFORM_WII) || defined(PLATFORM_WIIU) || defined(PLATFORM_GAMECUBE)
+    #if !defined(KEN_LITTLE_ENDIAN) && !defined(KEN_BIG_ENDIAN)
+        #define KEN_BIG_ENDIAN 1
+    #endif
+#endif
+
+#if defined(PLATFORM_SWITCH)
+    #if !defined(KEN_LITTLE_ENDIAN) && !defined(KEN_BIG_ENDIAN)
+        #define KEN_LITTLE_ENDIAN 1
+    #endif
+#endif
 
 #endif // KENLIB_TARGET_CONFIGURATION_H
