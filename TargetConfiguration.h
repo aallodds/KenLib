@@ -386,4 +386,347 @@
     #endif
 #endif
 
+//
+// Define any unset macros to zero
+//
+#ifndef COMPILER_CLANG
+    #define COMPILER_CLANG 0
+#endif
+
+#ifndef COMPILER_APPLE_CLANG
+    #define COMPILER_APPLE_CLANG 0
+#endif
+
+#ifndef COMPILER_GCC
+    #define COMPILER_GCC 0
+#endif
+
+#ifndef COMPILER_MSVC
+    #define COMPILER_MSVC 0
+#endif
+
+#ifndef COMPILER_WATCOM
+    #define COMPILER_WATCOM 0
+#endif
+
+#ifndef COMPILER_BORLAND
+    #define COMPILER_BORLAND 0
+#endif
+
+#ifndef COMPILER_METROWERKS
+    #define COMPILER_METROWERKS 0
+#endif
+
+#ifndef COMPILER_MWERKS
+    #define COMPILER_MWERKS 0
+#endif
+
+#ifndef LANG_CPP
+    #define LANG_CPP 0
+#endif
+
+#ifndef CPP_VERSION
+    #define CPP_VERSION 0
+#endif
+
+#ifndef CPP20
+    #define CPP20 0
+#endif
+
+#ifndef CPP17
+    #define CPP17 0
+#endif
+
+#ifndef CPP14
+    #define CPP14 0
+#endif
+
+#ifndef CPP11
+    #define CPP11 0
+#endif
+
+#ifndef CPP98
+    #define CPP98 0
+#endif
+
+#ifndef LANG_C
+    #define LANG_C 0
+#endif
+
+#ifndef C_VERSION
+    #define C_VERSION 0
+#endif
+
+#ifndef C17
+    #define C17 0
+#endif
+
+#ifndef C18
+    #define C18 0
+#endif
+
+#ifndef C11
+    #define C11 0
+#endif
+
+#ifndef C99
+    #define C99 0
+#endif
+
+#ifndef C94
+    #define C94 0
+#endif
+
+#ifndef C89
+    #define C89 0
+#endif
+
+#ifndef LANG_OBJC
+    #define LANG_OBJC 0
+#endif
+
+#ifndef CPU_X86
+    #define CPU_X86 0
+#endif
+
+#ifndef CPU_X86_64
+    #define CPU_X86_64 0
+#endif
+
+#ifndef CPU_X86_32
+    #define CPU_X86_32 0
+#endif
+
+#ifndef CPU_ARM
+    #define CPU_ARM 0
+#endif
+
+#ifndef CPU_ARM64
+    #define CPU_ARM64 0
+#endif
+
+#ifndef CPU_ARM32
+    #define CPU_ARM32 0
+#endif
+
+#ifndef CPU_PPC
+    #define CPU_PPC 0
+#endif
+
+#ifndef CPU_PPC64
+    #define CPU_PPC64 0
+#endif
+
+#ifndef CPU_PPC32
+    #define CPU_PPC32 0
+#endif
+
+#ifndef CPU_MIPS
+    #define CPU_MIPS 0
+#endif
+
+#ifndef CPU_MIPS64
+    #define CPU_MIPS64 0
+#endif
+
+#ifndef CPU_MIPS32
+    #define CPU_MIPS32 0
+#endif
+
+#ifndef CPU_RISCV
+    #define CPU_RISCV 0
+#endif
+
+#ifndef CPU_RISCV64
+    #define CPU_RISCV64 0
+#endif
+
+#ifndef CPU_RISCV32
+    #define CPU_RISCV32 0
+#endif
+
+#ifndef PLATFORM_WINDOWS
+    #define PLATFORM_WINDOWS 0
+#endif
+
+#ifndef PLATFORM_WIN64
+    #define PLATFORM_WIN64 0
+#endif
+
+#ifndef PLATFORM_WIN32
+    #define PLATFORM_WIN32 0
+#endif
+
+#ifndef PLATFORM_MINGW
+    #define PLATFORM_MINGW 0
+#endif
+
+#ifndef PLATFORM_MINGW64
+    #define PLATFORM_MINGW64 0
+#endif
+
+#ifndef PLATFORM_MINGW32
+    #define PLATFORM_MINGW32 0
+#endif
+
+#ifndef PLATFORM_ANDROID
+    #define PLATFORM_ANDROID 0
+#endif
+
+#ifndef PLATFORM_LINUX
+    #define PLATFORM_LINUX 0
+#endif
+
+#ifndef PLATFORM_BSD
+    #define PLATFORM_BSD 0
+#endif
+
+#ifndef PLATFORM_OPENBSD
+    #define PLATFORM_OPENBSD 0
+#endif
+
+#ifndef PLATFORM_FREEBSD
+    #define PLATFORM_FREEBSD 0
+#endif
+
+#ifndef PLATFORM_NETBSD
+    #define PLATFORM_NETBSD 0
+#endif
+
+#ifndef PLATFORM_BSDI
+    #define PLATFORM_BSDI 0
+#endif
+
+#ifndef PLATFORM_DRAGONFLY
+    #define PLATFORM_DRAGONFLY 0
+#endif
+
+#ifndef PLATFORM_GAMECUBE
+    #define PLATFORM_GAMECUBE 0
+#endif
+
+#ifndef PLATFORM_NDS
+    #define PLATFORM_NDS 0
+#endif
+
+#ifndef PLATFORM_DS
+    #define PLATFORM_DS 0
+#endif
+
+#ifndef PLATFORM_3DS
+    #define PLATFORM_3DS 0
+#endif
+
+#ifndef PLATFORM_WII
+    #define PLATFORM_WII 0
+#endif
+
+#ifndef PLATFORM_WIIU
+    #define PLATFORM_WIIU 0
+#endif
+
+#ifndef PLATFORM_SWITCH
+    #define PLATFORM_SWITCH 0
+#endif
+
+#ifndef PLATFORM_PSP
+    #define PLATFORM_PSP 0
+#endif
+
+#ifndef PLATFORM_PSP2
+    #define PLATFORM_PSP2 0
+#endif
+
+#ifndef PLATFORM_VITA
+    #define PLATFORM_VITA 0
+#endif
+
+#ifndef PLATFORM_PS2
+    #define PLATFORM_PS2 0
+#endif
+
+#ifndef PLATFORM_PS3
+    #define PLATFORM_PS3 0
+#endif
+
+#ifndef PLATFORM_PS4
+    #define PLATFORM_PS4 0
+#endif
+
+#ifndef PLATFORM_ORBIS
+    #define PLATFORM_ORBIS 0
+#endif
+
+#ifndef PLATFORM_PS5
+    #define PLATFORM_PS5 0
+#endif
+
+#ifndef PLATFORM_PROSPERO
+    #define PLATFORM_PROSPERO 0
+#endif
+
+#ifndef PLATFORM_XBOX360
+    #define PLATFORM_XBOX360 0
+#endif
+
+#ifndef PLATFORM_X360
+    #define PLATFORM_X360 0
+#endif
+
+#ifndef PLATFORM_XENON
+    #define PLATFORM_XENON 0
+#endif
+
+#ifndef PLATFORM_XBOXONE
+    #define PLATFORM_XBOXONE 0
+#endif
+
+#ifndef PLATFORM_XBOX_ONE
+    #define PLATFORM_XBOX_ONE 0
+#endif
+
+#ifndef PLATFORM_XBOX1
+    #define PLATFORM_XBOX1 0
+#endif
+
+#ifndef PLATFORM_DURANGO
+    #define PLATFORM_DURANGO 0
+#endif
+
+#ifndef PLATFORM_XBOXSERIES
+    #define PLATFORM_XBOXSERIES 0
+#endif
+
+#ifndef PLATFORM_XBOX_SERIES
+    #define PLATFORM_XBOX_SERIES 0
+#endif
+
+#ifndef PLATFORM_SCARLETT
+    #define PLATFORM_SCARLETT 0
+#endif
+
+#ifndef PLATFORM_XBOX
+    #define PLATFORM_XBOX 0
+#endif
+
+#ifndef KEN_ILP32
+    #define KEN_ILP32 0
+#endif
+
+#ifndef KEN_LP64
+    #define KEN_LP64 0
+#endif
+
+#ifndef KEN_LLP64
+    #define KEN_LLP64 0
+#endif
+
+#ifndef KEN_LITTLE_ENDIAN
+    #define KEN_LITTLE_ENDIAN 0
+#endif
+
+#ifndef KEN_BIG_ENDIAN
+    #define KEN_BIG_ENDIAN 0
+#endif
+
 #endif // KENLIB_TARGETCONFIGURATION_H
