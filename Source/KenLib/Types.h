@@ -17,7 +17,7 @@
 namespace Ken {
 #endif
 
-#if defiend(LANG_CPP)
+#if defined(LANG_CPP)
 using f32 = float;
 using f64 = double;
 #else
