@@ -11,6 +11,8 @@
 #else
     #include <stddef.h>
     #include <stdint.h>
+    #include <stdbool.h>
+    #include <iso646.h>
 #endif
 
 #if defined(LANG_CPP)
